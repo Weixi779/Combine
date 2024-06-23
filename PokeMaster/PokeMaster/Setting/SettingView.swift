@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct SettingView: View {
-    @ObservedObject var settings = Settings()
+    @EnvironmentObject var store: Store
+    var settingBinding: Binding<Settings> {
+        $store.appStore.setting
+    }
+    
+    var settings: Settings {
+        store.appStore.setting
+    }
     
     var body: some View {
         Form {
@@ -20,21 +27,20 @@ struct SettingView: View {
     
     var accountSection: some View {
         Section(header: Text("账户")) {
-            Picker(selection: $settings.accountBehavior, label: Text("")) {
+            Picker(selection: settingBinding.accountBehavior, label: Text("")) {
                 ForEach(Settings.AccountBehavior.allCases, id: \.self) {
                     Text($0.text)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
             
-            TextField("电子邮箱", text: $settings.email)
-            SecureField("密码", text: $settings.password)
+            TextField("电子邮箱", text: settingBinding.email)
+            SecureField("密码", text: settingBinding.password)
             
             if settings.accountBehavior == .register {
-                SecureField("密码", text: $settings.verifyPassword)
+                SecureField("密码", text: settingBinding.verifyPassword)
             }
-            
-            Button(settings.accountBehavior.text) {
+           Button(settings.accountBehavior.text) {
                 print("登录/注册")
             }
         }
@@ -42,16 +48,16 @@ struct SettingView: View {
     
     var optionSection: some View {
         Section(header: Text("选项")) {
-            Toggle(isOn: $settings.showEnglishName) {
+            Toggle(isOn: settingBinding.showEnglishName) {
                 Text("显示英文名")
             }
-            Picker(selection: $settings.sorting, label: Text("排序方式")) {
+            Picker(selection: settingBinding.sorting, label: Text("排序方式")) {
                 ForEach(Settings.Sorting.allCases, id: \.self) {
                     Text($0.text)
                 }
             }
             
-            Toggle(isOn: $settings.showFavoriteOnly) {
+            Toggle(isOn: settingBinding.showFavoriteOnly) {
                 Text("只显示收藏")
             }
         }
@@ -71,4 +77,5 @@ struct SettingView: View {
 
 #Preview {
     SettingView()
+        .environmentObject(Store())
 }
