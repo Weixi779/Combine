@@ -9,6 +9,5 @@ import Foundation
 
 
 struct AppState {
-    
-    var setting = Settings()
+    var settings = Settings()
 }

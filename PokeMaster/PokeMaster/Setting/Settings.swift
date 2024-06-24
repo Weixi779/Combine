@@ -7,7 +7,10 @@
 
 import Foundation
 
-class Settings: ObservableObject {
+struct Settings {
+    @FileStorage(directory: .documentDirectory, fileName: "user.json")
+    var loginUser: User?
+
     enum AccountBehavior: CaseIterable {
         case register, login
     }
@@ -16,15 +19,18 @@ class Settings: ObservableObject {
         case id, name, color, favorite
     }
     
-    @Published var sorting = Sorting.id
-    @Published var accountBehavior = AccountBehavior.login
+    var sorting = Sorting.id
+    var accountBehavior = AccountBehavior.login
     
-    @Published var email = ""
-    @Published var password = ""
-    @Published var verifyPassword = ""
+    var email = ""
+    var password = ""
+    var verifyPassword = ""
     
-    @Published var showEnglishName = true
-    @Published var showFavoriteOnly = false
+    var showEnglishName = true
+    var showFavoriteOnly = false
+    
+    var loginRequesting = false
+    var loginError: AppError?
 }
 
 
