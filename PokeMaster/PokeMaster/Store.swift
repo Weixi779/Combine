@@ -34,6 +34,8 @@ class Store: ObservableObject {
             }
             appState.settings.loginRequesting = true
             appCommand = LoginAppCommand(email: email, password: password)
+        case .logout:
+            appCommand = LogoutAppCommand()
         case .accountBehaviorDone(let result):
             appState.settings.loginRequesting = false
             switch result {
