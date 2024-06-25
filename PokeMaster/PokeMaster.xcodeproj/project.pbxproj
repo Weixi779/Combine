@@ -96,6 +96,7 @@
 		60C81D552C2A7EF600D3C4D3 /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D542C2A7EF600D3C4D3 /* LogoutRequest.swift */; };
 		60C81D572C2A7F7100D3C4D3 /* LogoutAppCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D562C2A7F7100D3C4D3 /* LogoutAppCommand.swift */; };
 		60C81D592C2A824D00D3C4D3 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D582C2A824D00D3C4D3 /* UserDefaultsStorage.swift */; };
+		60C81D5B2C2A863500D3C4D3 /* AccountChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D5A2C2A863500D3C4D3 /* AccountChecker.swift */; };
 		60DF0A522C1D8496004A878F /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DF0A512C1D8496004A878F /* PokemonList.swift */; };
 		60DF0A542C1D8AA3004A878F /* PokemeonInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DF0A532C1D8AA3004A878F /* PokemeonInfoPanel.swift */; };
 		60DF0A562C1EFBF6004A878F /* BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DF0A552C1EFBF6004A878F /* BlurEffect.swift */; };
@@ -196,6 +197,7 @@
 		60C81D542C2A7EF600D3C4D3 /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		60C81D562C2A7F7100D3C4D3 /* LogoutAppCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAppCommand.swift; sourceTree = "<group>"; };
 		60C81D582C2A824D00D3C4D3 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		60C81D5A2C2A863500D3C4D3 /* AccountChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountChecker.swift; sourceTree = "<group>"; };
 		60DF0A512C1D8496004A878F /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		60DF0A532C1D8AA3004A878F /* PokemeonInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemeonInfoPanel.swift; sourceTree = "<group>"; };
 		60DF0A552C1EFBF6004A878F /* BlurEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffect.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				60DF0A5B2C1F025D004A878F /* SettingView.swift */,
 				60DF0A5D2C1F0624004A878F /* SettingRootView.swift */,
 				60C81D432C29311000D3C4D3 /* User.swift */,
+				60C81D5A2C2A863500D3C4D3 /* AccountChecker.swift */,
 				60C81D522C293F3E00D3C4D3 /* FileStorage.swift */,
 				60C81D582C2A824D00D3C4D3 /* UserDefaultsStorage.swift */,
 			);
@@ -575,6 +578,7 @@
 				6079DBA12C157A8B00F95652 /* Helpers.swift in Sources */,
 				60C81D462C2932EA00D3C4D3 /* AppAction.swift in Sources */,
 				60DF0A542C1D8AA3004A878F /* PokemeonInfoPanel.swift in Sources */,
+				60C81D5B2C2A863500D3C4D3 /* AccountChecker.swift in Sources */,
 				60DF0A5C2C1F025D004A878F /* SettingView.swift in Sources */,
 				60C81D572C2A7F7100D3C4D3 /* LogoutAppCommand.swift in Sources */,
 				60DF0A522C1D8496004A878F /* PokemonList.swift in Sources */,

@@ -13,6 +13,14 @@ struct SettingView: View {
         $store.appStore.settings
     }
     
+    var checkerBinding: Binding<AccountChecker> {
+        $store.appStore.checker
+    }
+    
+    var checker: AccountChecker {
+        store.appStore.checker
+    }
+    
     var settings: Settings {
         store.appStore.settings
     }
@@ -23,43 +31,43 @@ struct SettingView: View {
             optionSection
             actionSection
         }
-        .alert(item: settingBinding.loginError) { error in
+        .alert(item: checkerBinding.loginError) { error in
             Alert(title: Text(error.localizedDescription))
         }
     }
     
     var accountSection: some View {
         Section(header: Text("账户")) {
-            if settings.loginUser == nil {
-                Picker(selection: settingBinding.accountBehavior, label: Text("")) {
-                    ForEach(Settings.AccountBehavior.allCases, id: \.self) {
+            if let user = settings.loginUser {
+                Text(user.email)
+                Button("注销") {
+                    self.store.dispatch(AppAction.logout)
+                }
+            } else {
+                Picker(selection: checkerBinding.accountBehavior, label: Text("")) {
+                    ForEach(AccountBehavior.allCases, id: \.self) {
                         Text($0.text)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                TextField("电子邮箱", text: settingBinding.email)
-                SecureField("密码", text: settingBinding.password)
+                TextField("电子邮箱", text: checkerBinding.email)
+                SecureField("密码", text: checkerBinding.password)
                 
-                if settings.accountBehavior == .register {
-                    SecureField("密码", text: settingBinding.verifyPassword)
+                if checker.accountBehavior == .register {
+                    SecureField("密码", text: checkerBinding.verifyPassword)
                 }
                 
-                if settings.loginRequesting {
+                if checker.loginRequesting {
                     ProgressView()
                 } else {
-                    Button(settings.accountBehavior.text) {
+                    Button(checker.accountBehavior.text) {
                         let action = AppAction.login(
-                            email: self.settings.email,
-                            password: self.settings.password
+                            email: checker.email,
+                            password: checker.password
                         )
                         self.store.dispatch(action)
                     }
-                }
-            } else {
-                Text(settings.loginUser!.email)
-                Button("注销") {
-                    self.store.dispatch(AppAction.logout)
                 }
             }
         }
@@ -67,15 +75,14 @@ struct SettingView: View {
     
     var optionSection: some View {
         Section(header: Text("选项")) {
-            Toggle(isOn: settingBinding.showEnglishName) {
-                Text("显示英文名")
-            }
             Picker(selection: settingBinding.sorting, label: Text("排序方式")) {
                 ForEach(Settings.Sorting.allCases, id: \.self) {
                     Text($0.text)
                 }
             }
-            
+            Toggle(isOn: settingBinding.showEnglishName) {
+                Text("显示英文名")
+            }
             Toggle(isOn: settingBinding.showFavoriteOnly) {
                 Text("只显示收藏")
             }

@@ -29,20 +29,20 @@ class Store: ObservableObject {
         var appCommand: AppCommand?
         switch action {
         case .login(let email, let password):
-            guard !appState.settings.loginRequesting else {
+            guard !appState.checker.loginRequesting else {
                 break
             }
-            appState.settings.loginRequesting = true
+            appState.checker.loginRequesting = true
             appCommand = LoginAppCommand(email: email, password: password)
         case .logout:
             appCommand = LogoutAppCommand()
         case .accountBehaviorDone(let result):
-            appState.settings.loginRequesting = false
+            appState.checker.loginRequesting = false
             switch result {
             case .success(let user):
                 appState.settings.loginUser = user
             case .failure(let error):
-                appState.settings.loginError = error
+                appState.checker.loginError = error
             }
         }
         return (appState, appCommand)

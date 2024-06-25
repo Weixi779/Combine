@@ -10,29 +10,17 @@ import Foundation
 struct Settings {
     @FileStorage(directory: .documentDirectory, fileName: "user.json")
     var loginUser: User?
-
-    enum AccountBehavior: CaseIterable {
-        case register, login
-    }
     
-    enum Sorting: CaseIterable {
+    enum Sorting: CaseIterable, Codable {
         case id, name, color, favorite
     }
     
-    var sorting = Sorting.id
-    var accountBehavior = AccountBehavior.login
-    
-    var email = ""
-    var password = ""
-    var verifyPassword = ""
-    
+    @UserDefaultsStorage(defaultValue: Sorting.id, key: "sorting")
+    var sorting: Sorting
     @UserDefaultsStorage(defaultValue: true, key: "showEnglishName")
     var showEnglishName: Bool
     @UserDefaultsStorage(defaultValue: false, key: "showFavoriteOnly")
     var showFavoriteOnly: Bool
-    
-    var loginRequesting = false
-    var loginError: AppError?
 }
 
 
@@ -48,7 +36,7 @@ extension Settings.Sorting {
 }
 
 
-extension Settings.AccountBehavior {
+extension AccountBehavior {
     var text: String {
         switch self {
         case .register: return "注册"
