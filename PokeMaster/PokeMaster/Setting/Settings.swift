@@ -26,8 +26,10 @@ struct Settings {
     var password = ""
     var verifyPassword = ""
     
-    var showEnglishName = true
-    var showFavoriteOnly = false
+    @UserDefaultsStorage(defaultValue: true, key: "showEnglishName")
+    var showEnglishName: Bool
+    @UserDefaultsStorage(defaultValue: false, key: "showFavoriteOnly")
+    var showFavoriteOnly: Bool
     
     var loginRequesting = false
     var loginError: AppError?
