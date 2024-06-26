@@ -21,6 +21,8 @@ struct Settings {
     var showEnglishName: Bool
     @UserDefaultsStorage(defaultValue: false, key: "showFavoriteOnly")
     var showFavoriteOnly: Bool
+    
+    var isEmailValid: Bool = false
 }
 
 

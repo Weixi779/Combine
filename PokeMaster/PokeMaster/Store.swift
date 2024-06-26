@@ -10,6 +10,18 @@ import Combine
 class Store: ObservableObject {
     @Published var appStore = AppState()
     
+    var disposeBag = [AnyCancellable]()
+    
+    init() {
+        setupObservers()
+    }
+    
+    func setupObservers() {
+        self.appStore.checker.isEmailValid.sink { isValid in
+            self.dispatch(.emialValid(valid: isValid))
+        }.store(in: &disposeBag)
+    }
+    
     func dispatch(_ action: AppAction) {
 #if DEBUG
         print("[ACTION]:\(action)")
@@ -36,6 +48,8 @@ class Store: ObservableObject {
             appCommand = LoginAppCommand(email: email, password: password)
         case .logout:
             appCommand = LogoutAppCommand()
+        case .emialValid(let vaild):
+            appState.settings.isEmailValid = vaild
         case .accountBehaviorDone(let result):
             appState.checker.loginRequesting = false
             switch result {

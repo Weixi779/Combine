@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SettingView: View {
     @EnvironmentObject var store: Store
+    
+    @State private var isGreenColor: Bool = true
+    
     var settingBinding: Binding<Settings> {
         $store.appStore.settings
     }
@@ -51,7 +54,14 @@ struct SettingView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                TextField("电子邮箱", text: checkerBinding.email)
+                TextField("电子邮箱", text: checkerBinding.email, onEditingChanged: { isEditing in
+                    isGreenColor = settings.isEmailValid
+                })
+                .onChange(of: settings.isEmailValid) { oldValue, newValue in
+                    isGreenColor = newValue
+                }
+                .foregroundColor(isGreenColor ? .green : .red)
+                
                 SecureField("密码", text: checkerBinding.password)
                 
                 if checker.accountBehavior == .register {
