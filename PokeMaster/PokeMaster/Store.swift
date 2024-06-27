@@ -58,6 +58,21 @@ class Store: ObservableObject {
             case .failure(let error):
                 appState.checker.loginError = error
             }
+        case .loadPokemons:
+            if appState.pokemonList.loadingPokemons { break }
+            appState.pokemonList.loadingPokemons = true
+            appCommand = LoadPokemonsCommand()
+        case .loadPokemonsDone(let result):
+            appState.pokemonList.loadingPokemons = false
+            switch result {
+            case .success(let success):
+                appState.pokemonList.pokemons = Dictionary(
+                    uniqueKeysWithValues: success.map { ($0.id, $0) }
+                )
+            case .failure(let failure):
+                print(failure)
+            }
+            
         }
         return (appState, appCommand)
     }

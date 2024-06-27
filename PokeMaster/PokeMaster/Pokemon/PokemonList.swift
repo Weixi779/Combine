@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct PokemonList: View {
+    @EnvironmentObject var store: Store
+    
+    var pokemonModel: PokemonModels {
+        store.appStore.pokemonList
+    }
+    
     @State var expandingIndex: Int?
     
     var body: some View {
         ScrollView {
             LazyVStack{
-                ForEach(PokemonViewModel.all) { pokemon in
+                ForEach(pokemonModel.allPokemonsByID) { pokemon in
                     PokemonInfoRow(
                         model: pokemon,
                         expanded: self.expandingIndex == pokemon.id

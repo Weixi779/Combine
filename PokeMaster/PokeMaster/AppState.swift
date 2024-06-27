@@ -11,4 +11,5 @@ import Foundation
 struct AppState {
     var settings = Settings()
     var checker = AccountChecker()
+    var pokemonList = PokemonModels()
 }
