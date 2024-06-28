@@ -14,4 +14,5 @@ enum AppAction {
     case accountBehaviorDone(result: Result<User?, AppError>)
     case loadPokemons
     case loadPokemonsDone(result: Result<[PokemonViewModel], AppError>)
+    case clearPokemonCache
 }

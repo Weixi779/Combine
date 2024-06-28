@@ -47,7 +47,9 @@ class Store: ObservableObject {
             appState.checker.loginRequesting = true
             appCommand = LoginAppCommand(email: email, password: password)
         case .logout:
-            appCommand = LogoutAppCommand()
+            appState.settings.loginUser = nil
+            appState.checker.email = ""
+            appState.checker.password = ""
         case .emialValid(let vaild):
             appState.settings.isEmailValid = vaild
         case .accountBehaviorDone(let result):
@@ -72,7 +74,8 @@ class Store: ObservableObject {
             case .failure(let failure):
                 print(failure)
             }
-            
+        case .clearPokemonCache:
+            appState.pokemonList.pokemons = nil
         }
         return (appState, appCommand)
     }

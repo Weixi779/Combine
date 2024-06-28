@@ -8,7 +8,7 @@
 import Foundation
 
 struct PokemonModels {
-//    @FileStorage(directory: .cachesDirectory, fileName: "pokemons.json")
+    @FileStorage(directory: .cachesDirectory, fileName: "pokemons.json")
     var pokemons: [Int: PokemonViewModel]?
     var loadingPokemons = false
     
