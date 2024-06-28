@@ -16,10 +16,12 @@ struct PokemonRootView: View {
                     .onAppear {
                         store.dispatch(.loadPokemons)
                     }
+            } else {
+                PokemonList()
+                    .navigationTitle("宝可梦列表")
             }
-            PokemonList()
-                .navigationTitle("宝可梦列表")
         }
+        
     }
 }
 

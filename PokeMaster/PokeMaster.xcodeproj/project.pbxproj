@@ -82,6 +82,7 @@
 		6079DBDF2C157A8B00F95652 /* pokemon-species-29.json in Resources */ = {isa = PBXBuildFile; fileRef = 6079DB962C157A8B00F95652 /* pokemon-species-29.json */; };
 		6079DBE02C157A8B00F95652 /* pokemon-species-30.json in Resources */ = {isa = PBXBuildFile; fileRef = 6079DB972C157A8B00F95652 /* pokemon-species-30.json */; };
 		6079DBE22C157AE700F95652 /* PokemonInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6079DBE12C157AE700F95652 /* PokemonInfoRow.swift */; };
+		608D9E412C2E7467002EF93A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 608D9E402C2E7467002EF93A /* Kingfisher */; };
 		60C81D3E2C2857A500D3C4D3 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D3D2C2857A500D3C4D3 /* MainTab.swift */; };
 		60C81D402C285A8700D3C4D3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D3F2C285A8700D3C4D3 /* AppState.swift */; };
 		60C81D422C285C4100D3C4D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D412C285C4100D3C4D3 /* Store.swift */; };
@@ -221,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				608D9E412C2E7467002EF93A /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +466,9 @@
 			dependencies = (
 			);
 			name = PokeMaster;
+			packageProductDependencies = (
+				608D9E402C2E7467002EF93A /* Kingfisher */,
+			);
 			productName = PokeMaster;
 			productReference = 6079DB3A2C157A0E00F95652 /* PokeMaster.app */;
 			productType = "com.apple.product-type.application";
@@ -492,6 +497,9 @@
 				Base,
 			);
 			mainGroup = 6079DB312C157A0E00F95652;
+			packageReferences = (
+				608D9E3F2C2E7467002EF93A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 6079DB3B2C157A0E00F95652 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -824,6 +832,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		608D9E3F2C2E7467002EF93A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		608D9E402C2E7467002EF93A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 608D9E3F2C2E7467002EF93A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6079DB322C157A0E00F95652 /* Project object */;
 }
