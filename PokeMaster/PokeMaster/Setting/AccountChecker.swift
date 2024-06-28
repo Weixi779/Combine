@@ -13,7 +13,7 @@ enum AccountBehavior: CaseIterable {
 }
 
 class AccountChecker {
-    @Published var accountBehavior = AccountBehavior.login
+    @Published var accountBehavior: AccountBehavior = AccountBehavior.login
     @Published var email = ""
     @Published var password = ""
     @Published var verifyPassword = ""
@@ -44,6 +44,15 @@ class AccountChecker {
         
         return Publishers.CombineLatest3(remoteVerify, emailLocalVaild, canSkipRemoteVerify)
             .map{ $0 && ($1 || $2) }
+            .eraseToAnyPublisher()
+    }
+    
+    var isRegisterValid: AnyPublisher<Bool, Never> {
+        let isRegisterState = $accountBehavior.map { $0 == .register }
+        let isPasswordEmpty = $password.map{ $0.isEmpty }
+        let isSameVerifyPassword = $verifyPassword.map{ $0 == self.password }
+        return Publishers.CombineLatest4(isRegisterState, isEmailValid, isPasswordEmpty, isSameVerifyPassword)
+            .map { $0 && ($1 && !$2 && $3) }
             .eraseToAnyPublisher()
     }
 }

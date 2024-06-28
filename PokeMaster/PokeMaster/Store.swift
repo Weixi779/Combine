@@ -17,9 +17,14 @@ class Store: ObservableObject {
     }
     
     func setupObservers() {
-        self.appStore.checker.isEmailValid.sink { isValid in
-            self.dispatch(.emialValid(valid: isValid))
-        }.store(in: &disposeBag)
+        self.appStore.checker.isEmailValid
+            .sink { isValid in
+                self.dispatch(.emialValid(valid: isValid))
+            }.store(in: &disposeBag)
+        self.appStore.checker.isRegisterValid
+            .sink { isValid in
+                self.dispatch(.registerVaild(valid: isValid))
+            }.store(in: &disposeBag)
     }
     
     func dispatch(_ action: AppAction) {
@@ -52,6 +57,8 @@ class Store: ObservableObject {
             appState.checker.password = ""
         case .emialValid(let vaild):
             appState.settings.isEmailValid = vaild
+        case .registerVaild(let vaild):
+            appState.settings.isRegisterVaild = vaild
         case .accountBehaviorDone(let result):
             appState.checker.loginRequesting = false
             switch result {

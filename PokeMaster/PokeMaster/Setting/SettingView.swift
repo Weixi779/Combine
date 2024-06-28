@@ -78,6 +78,7 @@ struct SettingView: View {
                         )
                         self.store.dispatch(action)
                     }
+                    .disabled(checker.accountBehavior == .register ? !settings.isRegisterVaild : false)
                 }
             }
         }

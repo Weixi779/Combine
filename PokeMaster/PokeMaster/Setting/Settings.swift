@@ -23,6 +23,7 @@ struct Settings {
     var showFavoriteOnly: Bool
     
     var isEmailValid: Bool = false
+    var isRegisterVaild: Bool = false
 }
 
 
