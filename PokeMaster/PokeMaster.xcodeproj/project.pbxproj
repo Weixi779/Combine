@@ -434,10 +434,10 @@
 		60DF0A5A2C1EFF2F004A878F /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				60DF0A532C1D8AA3004A878F /* PokemeonInfoPanel.swift */,
 				6079DBE12C157AE700F95652 /* PokemonInfoRow.swift */,
 				60DF0A512C1D8496004A878F /* PokemonList.swift */,
 				60DF0A602C1F089B004A878F /* PokemonRootView.swift */,
-				60DF0A532C1D8AA3004A878F /* PokemeonInfoPanel.swift */,
 				60DF0A552C1EFBF6004A878F /* BlurEffect.swift */,
 				60C81D622C2D2F0900D3C4D3 /* PokemonModels.swift */,
 			);

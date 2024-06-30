@@ -16,4 +16,6 @@ struct PokemonModels {
         guard let pokemons = pokemons?.values else { return [] }
         return pokemons.sorted { $0.id < $1.id }
     }
+    
+    var expandingIndex: Int?
 }

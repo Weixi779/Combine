@@ -83,6 +83,8 @@ class Store: ObservableObject {
             }
         case .clearPokemonCache:
             appState.pokemonList.pokemons = nil
+        case .expandPokemons(let index):
+            appState.pokemonList.expandingIndex = index
         }
         return (appState, appCommand)
     }

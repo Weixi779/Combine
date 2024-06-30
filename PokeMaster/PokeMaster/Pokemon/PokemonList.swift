@@ -13,24 +13,22 @@ struct PokemonList: View {
     var pokemonModel: PokemonModels {
         store.appStore.pokemonList
     }
-    
-    @State var expandingIndex: Int?
-    
+        
     var body: some View {
         ScrollView {
             LazyVStack{
                 ForEach(pokemonModel.allPokemonsByID) { pokemon in
                     PokemonInfoRow(
                         model: pokemon,
-                        expanded: self.expandingIndex == pokemon.id
+                        expanded: pokemonModel.expandingIndex == pokemon.id
                     )
                     .onTapGesture {
                         withAnimation(.spring(response: 0.55, dampingFraction: 0.425))
                         {
-                            if self.expandingIndex == pokemon.id {
-                                self.expandingIndex = nil
+                            if let index = pokemonModel.expandingIndex, index == pokemon.id {
+                                store.dispatch(.expandPokemons(index: nil))
                             } else {
-                                self.expandingIndex = pokemon.id
+                                store.dispatch(.expandPokemons(index: pokemon.id))
                             }
                         }
                     }
