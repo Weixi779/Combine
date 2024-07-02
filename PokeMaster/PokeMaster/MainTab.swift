@@ -23,19 +23,11 @@ struct MainTab: View {
             }
         }
         .ignoresSafeArea(edges: .top)
-        .overlay(panel)
-    }
-    
-    var panel: some View {
-        Group {
-            if store.appStare.pokemonList.selectionState.panelPresented {
-                if let index = store.appStare.pokemonList.selectionState.expandingIndex,
-                   let pokemons = store.appStare.pokemonList.pokemons {
-                    let targetPokemon = pokemons[index]
-                    PokemonInfoPanelOverlay(model: targetPokemon!)
-                }
-            } else {
-                EmptyView()
+        .overlaySheet(isPresented: $store.appStare.pokemonList.selectionState.panelPresented) {
+            if let index = store.appStare.pokemonList.selectionState.expandingIndex,
+               let pokemons = store.appStare.pokemonList.pokemons {
+                let targetPokemon = pokemons[index]
+                PokemonInfoPanelOverlay(model: targetPokemon!)
             }
         }
     }

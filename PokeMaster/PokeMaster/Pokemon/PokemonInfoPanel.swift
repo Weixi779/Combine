@@ -18,9 +18,12 @@ struct PokemonInfoPanel: View {
     var body: some View {
         VStack(spacing: 20) {
             topIndicator
-            Hedaer(model: model)
-            pokemonDescription
-            AbilityList(model: model, abilityModels: abilities)
+            Group {
+                Hedaer(model: model)
+                pokemonDescription
+                AbilityList(model: model, abilityModels: abilities)
+            }
+//            .animation(nil, value: UUID())
         }
         .padding(EdgeInsets(top: 12, leading: 30, bottom: 30, trailing: 30))
         .background(.regularMaterial)
