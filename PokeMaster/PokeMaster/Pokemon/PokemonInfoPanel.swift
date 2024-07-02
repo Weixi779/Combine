@@ -7,25 +7,26 @@
 
 import SwiftUI
 
-struct PokemeonInfoPanel: View {
+struct PokemonInfoPanel: View {
+    @EnvironmentObject var store: Store
+    
     let model: PokemonViewModel
+    var abilities: [AbilityViewModel]? {
+        store.appStare.pokemonList.abilityViewModels(for: model.pokemon)
+    }
     
     var body: some View {
         VStack(spacing: 20) {
             topIndicator
             Hedaer(model: model)
             pokemonDescription
-            AbilityList(model: model, abilityModels: abilitys)
+            AbilityList(model: model, abilityModels: abilities)
         }
         .padding(EdgeInsets(top: 12, leading: 30, bottom: 30, trailing: 30))
         .background(.regularMaterial)
 
         .cornerRadius(20)
         .fixedSize(horizontal: false, vertical: true)
-    }
-    
-    var abilitys: [AbilityViewModel] {
-        return AbilityViewModel.sample(pokemonID: model.id)
     }
     
     var topIndicator: some View {
@@ -42,7 +43,7 @@ struct PokemeonInfoPanel: View {
     }
 }
 
-extension PokemeonInfoPanel {
+extension PokemonInfoPanel {
     struct Hedaer: View {
         let model: PokemonViewModel
         var body: some View {
@@ -120,7 +121,7 @@ extension PokemeonInfoPanel {
     }
 }
 
-extension PokemeonInfoPanel {
+extension PokemonInfoPanel {
     struct AbilityList: View {
         let model: PokemonViewModel
         let abilityModels: [AbilityViewModel]?
@@ -148,5 +149,5 @@ extension PokemeonInfoPanel {
 }
 
 #Preview {
-    PokemeonInfoPanel(model: .sample(id: 1))
+    PokemonInfoPanel(model: .sample(id: 1))
 }

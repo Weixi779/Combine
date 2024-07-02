@@ -8,7 +8,7 @@
 import Combine
 
 class Store: ObservableObject {
-    @Published var appStore = AppState()
+    @Published var appStare = AppState()
     
     var disposeBag = [AnyCancellable]()
     
@@ -17,11 +17,11 @@ class Store: ObservableObject {
     }
     
     func setupObservers() {
-        self.appStore.checker.isEmailValid
+        self.appStare.checker.isEmailValid
             .sink { isValid in
                 self.dispatch(.emialValid(valid: isValid))
             }.store(in: &disposeBag)
-        self.appStore.checker.isRegisterValid
+        self.appStare.checker.isRegisterValid
             .sink { isValid in
                 self.dispatch(.registerVaild(valid: isValid))
             }.store(in: &disposeBag)
@@ -31,8 +31,8 @@ class Store: ObservableObject {
 #if DEBUG
         print("[ACTION]:\(action)")
 #endif
-        let result = Store.reduce(state: appStore, action: action)
-        appStore = result.0
+        let result = Store.reduce(state: appStare, action: action)
+        appStare = result.0
         if let command = result.1 {
 #if DEBUG
             print("[COMMAND]:\(command)")
@@ -84,7 +84,24 @@ class Store: ObservableObject {
         case .clearPokemonCache:
             appState.pokemonList.pokemons = nil
         case .expandPokemons(let index):
-            appState.pokemonList.expandingIndex = index
+            let lastIndex = appState.pokemonList.selectionState.expandingIndex
+            let nextIndex = lastIndex == index ? nil : index
+            appState.pokemonList.selectionState.expandingIndex = nextIndex
+        case .togglePanelPresenting(let presenting):
+            appState.pokemonList.selectionState.panelPresented = presenting
+        case .loadAbilities(let pokemon):
+            appCommand = LoadAbilitiesCommand(pokemon: pokemon)
+        case .loadAbilitiesDone(let result):
+            switch result {
+            case .success(let loadedAbilities):
+                var abilities = appState.pokemonList.abilities ?? [:]
+                for ability in loadedAbilities {
+                    abilities[ability.id] = ability
+                }
+                appState.pokemonList.abilities = abilities
+            case .failure(let error):
+                print(error)
+            }
         }
         return (appState, appCommand)
     }

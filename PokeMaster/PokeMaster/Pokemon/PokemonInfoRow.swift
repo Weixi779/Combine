@@ -9,6 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct PokemonInfoRow: View {
+    @EnvironmentObject var store: Store
+    
     let model: PokemonViewModel
     let expanded: Bool
     
@@ -43,7 +45,8 @@ struct PokemonInfoRow: View {
                 }
                 
                 Button {
-                    // - TODO: Panel
+                    let target = !store.appStare.pokemonList.selectionState.panelPresented
+                    store.dispatch(.togglePanelPresenting(presenting: target))
                 } label: {
                     Image(systemName: "chart.bar")
                         .modifier(ToolButtonModifier())
