@@ -52,8 +52,10 @@ struct PokemonInfoRow: View {
                         .modifier(ToolButtonModifier())
                 }
                 
-                Button {
-                    // - TODO: Web
+                NavigationLink {
+                    SafariView(url: model.detailPageURL)
+                        .navigationTitle(model.name)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
