@@ -11,6 +11,7 @@ struct SelectionState {
     var expandingIndex: Int? = nil
     var panelIndex: Int? = nil
     var panelPresented = false
+    var isSFViewActive = false
 
     func isExpanding(_ id: Int) -> Bool {
         expandingIndex == id

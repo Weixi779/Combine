@@ -102,6 +102,8 @@ class Store: ObservableObject {
             case .failure(let error):
                 print(error)
             }
+        case .safarViewPresenting(let presenting):
+            appState.pokemonList.selectionState.isSFViewActive = presenting
         }
         return (appState, appCommand)
     }

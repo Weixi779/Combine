@@ -15,6 +15,7 @@ enum AppAction {
     case loadAbilitiesDone(result: Result<[AbilityViewModel], AppError>)
     case expandPokemons(index: Int?)
     case togglePanelPresenting(presenting: Bool)
+    case safarViewPresenting(presenting: Bool)
     // MARK: Setting
     case login(email: String, password: String)
     case logout

@@ -10,7 +10,7 @@ import Kingfisher
 
 struct PokemonInfoRow: View {
     @EnvironmentObject var store: Store
-    
+        
     let model: PokemonViewModel
     let expanded: Bool
     
@@ -51,15 +51,20 @@ struct PokemonInfoRow: View {
                     Image(systemName: "chart.bar")
                         .modifier(ToolButtonModifier())
                 }
-                
-                NavigationLink {
-                    SafariView(url: model.detailPageURL)
-                        .navigationTitle(model.name)
-                        .navigationBarTitleDisplayMode(.inline)
+                Button {
+                    store.dispatch(.safarViewPresenting(presenting: true))
                 } label: {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
                 }
+                .navigationDestination(isPresented: $store.appStare.pokemonList.selectionState.isSFViewActive) {
+                    SafariView(url: model.detailPageURL) {
+                        store.dispatch(.safarViewPresenting(presenting: false))
+                    }
+                    .navigationTitle(model.name)
+                    .navigationBarTitleDisplayMode(.inline)
+                }
+
             }
             .padding(.bottom, 12)
             .opacity(expanded ? 1.0 : 0.0)
