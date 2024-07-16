@@ -111,6 +111,7 @@
 		60DF0A5C2C1F025D004A878F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DF0A5B2C1F025D004A878F /* SettingView.swift */; };
 		60DF0A5E2C1F0624004A878F /* SettingRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DF0A5D2C1F0624004A878F /* SettingRootView.swift */; };
 		60DF0A612C1F089B004A878F /* PokemonRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DF0A602C1F089B004A878F /* PokemonRootView.swift */; };
+		60FC2CCE2C46CB40006EE456 /* CodableWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 60FC2CCD2C46CB40006EE456 /* CodableWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				608D9E412C2E7467002EF93A /* Kingfisher in Frameworks */,
+				60FC2CCE2C46CB40006EE456 /* CodableWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +476,7 @@
 			name = PokeMaster;
 			packageProductDependencies = (
 				608D9E402C2E7467002EF93A /* Kingfisher */,
+				60FC2CCD2C46CB40006EE456 /* CodableWrapper */,
 			);
 			productName = PokeMaster;
 			productReference = 6079DB3A2C157A0E00F95652 /* PokeMaster.app */;
@@ -505,6 +508,7 @@
 			mainGroup = 6079DB312C157A0E00F95652;
 			packageReferences = (
 				608D9E3F2C2E7467002EF93A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				60FC2CCC2C46CB40006EE456 /* XCRemoteSwiftPackageReference "CodableWrapper" */,
 			);
 			productRefGroup = 6079DB3B2C157A0E00F95652 /* Products */;
 			projectDirPath = "";
@@ -850,6 +854,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		60FC2CCC2C46CB40006EE456 /* XCRemoteSwiftPackageReference "CodableWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/winddpan/CodableWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -857,6 +869,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 608D9E3F2C2E7467002EF93A /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		60FC2CCD2C46CB40006EE456 /* CodableWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60FC2CCC2C46CB40006EE456 /* XCRemoteSwiftPackageReference "CodableWrapper" */;
+			productName = CodableWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
