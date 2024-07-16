@@ -12,7 +12,7 @@ struct PokemonInfoPanel: View {
     
     let model: PokemonViewModel
     var abilities: [AbilityViewModel]? {
-        store.appStare.pokemonList.abilityViewModels(for: model.pokemon)
+        store.pokemonList.abilityViewModels(for: model.pokemon)
     }
     
     var body: some View {

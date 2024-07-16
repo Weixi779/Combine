@@ -45,7 +45,7 @@ struct PokemonInfoRow: View {
                 }
                 
                 Button {
-                    let target = !store.appStare.pokemonList.selectionState.panelPresented
+                    let target = !store.pokemonList.selectionState.panelPresented
                     store.dispatch(.togglePanelPresenting(presenting: target))
                 } label: {
                     Image(systemName: "chart.bar")
@@ -57,7 +57,7 @@ struct PokemonInfoRow: View {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
                 }
-                .navigationDestination(isPresented: $store.appStare.pokemonList.selectionState.isSFViewActive) {
+                .navigationDestination(isPresented: $store.pokemonList.selectionState.isSFViewActive) {
                     SafariView(url: model.detailPageURL) {
                         store.dispatch(.safarViewPresenting(presenting: false))
                     }

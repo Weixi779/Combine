@@ -12,21 +12,13 @@ struct SettingView: View {
     
     @State private var isGreenColor: Bool = true
     
-    var settingBinding: Binding<Settings> {
-        $store.appStare.settings
-    }
+    var settingBinding: Binding<Settings> { $store.settings }
     
-    var checkerBinding: Binding<AccountChecker> {
-        $store.appStare.checker
-    }
+    var checkerBinding: Binding<AccountChecker> { $store.checker }
     
-    var checker: AccountChecker {
-        store.appStare.checker
-    }
+    var checker: AccountChecker { store.checker }
     
-    var settings: Settings {
-        store.appStare.settings
-    }
+    var settings: Settings { store.settings }
     
     var body: some View {
         Form {

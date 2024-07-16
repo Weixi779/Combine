@@ -15,7 +15,7 @@ struct LoadAbilitiesCommand: AppCommand {
     func load(pokemonAbility: Pokemon.AbilityEntry, in store: Store)
         -> AnyPublisher<AbilityViewModel, AppError>
     {
-        if let value = store.appStare.pokemonList.abilities?[pokemonAbility.id.extractedID!] {
+        if let value = store.pokemonList.abilities?[pokemonAbility.id.extractedID!] {
             return Just(value)
                 .setFailureType(to: AppError.self)
                 .eraseToAnyPublisher()

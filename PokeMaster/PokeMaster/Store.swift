@@ -8,7 +8,9 @@
 import Combine
 
 class Store: ObservableObject {
-    @Published var appStare = AppState()
+    @Published var settings = Settings()
+    @Published var checker = AccountChecker()
+    @Published var pokemonList = PokemonModels()
     
     var disposeBag = [AnyCancellable]()
     
@@ -17,11 +19,11 @@ class Store: ObservableObject {
     }
     
     func setupObservers() {
-        self.appStare.checker.isEmailValid
+        self.checker.isEmailValid
             .sink { isValid in
                 self.dispatch(.emialValid(valid: isValid))
             }.store(in: &disposeBag)
-        self.appStare.checker.isRegisterValid
+        self.checker.isRegisterValid
             .sink { isValid in
                 self.dispatch(.registerVaild(valid: isValid))
             }.store(in: &disposeBag)
@@ -31,9 +33,9 @@ class Store: ObservableObject {
 #if DEBUG
         print("[ACTION]:\(action)")
 #endif
-        let result = Store.reduce(state: appStare, action: action)
-        appStare = result.0
-        if let command = result.1 {
+        let command = reduce(action: action)
+        
+        if let command = command {
 #if DEBUG
             print("[COMMAND]:\(command)")
 #endif
@@ -41,70 +43,69 @@ class Store: ObservableObject {
         }
     }
     
-    static func reduce(state: AppState, action: AppAction) -> (AppState, AppCommand?) {
-        var appState = state
+    func reduce(action: AppAction) -> AppCommand? {
         var appCommand: AppCommand?
         switch action {
         case .login(let email, let password):
-            guard !appState.checker.loginRequesting else {
+            guard checker.loginRequesting else {
                 break
             }
-            appState.checker.loginRequesting = true
+            self.checker.loginRequesting = true
             appCommand = LoginAppCommand(email: email, password: password)
         case .logout:
-            appState.settings.loginUser = nil
-            appState.checker.email = ""
-            appState.checker.password = ""
+            settings.loginUser = nil
+            checker.email = ""
+            checker.password = ""
         case .emialValid(let vaild):
-            appState.settings.isEmailValid = vaild
+            settings.isEmailValid = vaild
         case .registerVaild(let vaild):
-            appState.settings.isRegisterVaild = vaild
+            settings.isRegisterVaild = vaild
         case .accountBehaviorDone(let result):
-            appState.checker.loginRequesting = false
+            checker.loginRequesting = false
             switch result {
             case .success(let user):
-                appState.settings.loginUser = user
+                settings.loginUser = user
             case .failure(let error):
-                appState.checker.loginError = error
+                checker.loginError = error
             }
         case .loadPokemons:
-            if appState.pokemonList.loadingPokemons { break }
-            appState.pokemonList.loadingPokemons = true
+            if pokemonList.loadingPokemons { break }
+            pokemonList.loadingPokemons = true
             appCommand = LoadPokemonsCommand()
         case .loadPokemonsDone(let result):
-            appState.pokemonList.loadingPokemons = false
+            pokemonList.loadingPokemons = false
             switch result {
             case .success(let success):
-                appState.pokemonList.pokemons = Dictionary(
+                pokemonList.pokemons = Dictionary(
                     uniqueKeysWithValues: success.map { ($0.id, $0) }
                 )
             case .failure(let failure):
                 print(failure)
             }
         case .clearPokemonCache:
-            appState.pokemonList.pokemons = nil
+            pokemonList.pokemons = nil
         case .expandPokemons(let index):
-            let lastIndex = appState.pokemonList.selectionState.expandingIndex
+            let lastIndex = pokemonList.selectionState.expandingIndex
             let nextIndex = lastIndex == index ? nil : index
-            appState.pokemonList.selectionState.expandingIndex = nextIndex
+            pokemonList.selectionState.expandingIndex = nextIndex
         case .togglePanelPresenting(let presenting):
-            appState.pokemonList.selectionState.panelPresented = presenting
+            pokemonList.selectionState.panelPresented = presenting
         case .loadAbilities(let pokemon):
             appCommand = LoadAbilitiesCommand(pokemon: pokemon)
         case .loadAbilitiesDone(let result):
             switch result {
             case .success(let loadedAbilities):
-                var abilities = appState.pokemonList.abilities ?? [:]
+                var abilities = pokemonList.abilities ?? [:]
                 for ability in loadedAbilities {
                     abilities[ability.id] = ability
                 }
-                appState.pokemonList.abilities = abilities
+                pokemonList.abilities = abilities
             case .failure(let error):
                 print(error)
             }
         case .safarViewPresenting(let presenting):
-            appState.pokemonList.selectionState.isSFViewActive = presenting
+            pokemonList.selectionState.isSFViewActive = presenting
         }
-        return (appState, appCommand)
+        return appCommand
     }
 }

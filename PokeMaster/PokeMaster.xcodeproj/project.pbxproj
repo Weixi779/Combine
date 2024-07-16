@@ -89,7 +89,6 @@
 		60A0587E2C33C50D00862A30 /* OverlaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0587D2C33C50D00862A30 /* OverlaySheet.swift */; };
 		60A058802C366DB700862A30 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A0587F2C366DB700862A30 /* SafariView.swift */; };
 		60C81D3E2C2857A500D3C4D3 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D3D2C2857A500D3C4D3 /* MainTab.swift */; };
-		60C81D402C285A8700D3C4D3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D3F2C285A8700D3C4D3 /* AppState.swift */; };
 		60C81D422C285C4100D3C4D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D412C285C4100D3C4D3 /* Store.swift */; };
 		60C81D442C29311000D3C4D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D432C29311000D3C4D3 /* User.swift */; };
 		60C81D462C2932EA00D3C4D3 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C81D452C2932EA00D3C4D3 /* AppAction.swift */; };
@@ -197,7 +196,6 @@
 		60A0587D2C33C50D00862A30 /* OverlaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySheet.swift; sourceTree = "<group>"; };
 		60A0587F2C366DB700862A30 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		60C81D3D2C2857A500D3C4D3 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
-		60C81D3F2C285A8700D3C4D3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		60C81D412C285C4100D3C4D3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		60C81D432C29311000D3C4D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		60C81D452C2932EA00D3C4D3 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 				6079DB3D2C157A0E00F95652 /* PokeMasterApp.swift */,
 				60C81D3D2C2857A500D3C4D3 /* MainTab.swift */,
 				60C81D412C285C4100D3C4D3 /* Store.swift */,
-				60C81D3F2C285A8700D3C4D3 /* AppState.swift */,
 				60C81D452C2932EA00D3C4D3 /* AppAction.swift */,
 				60C81D4C2C29370E00D3C4D3 /* AppCommand.swift */,
 				60C81D502C29382900D3C4D3 /* SubscriptionToken.swift */,
@@ -624,7 +621,6 @@
 				60A0587A2C33BE8100862A30 /* LoadAbilityRequest.swift in Sources */,
 				6079DBA02C157A8B00F95652 /* FileHelper.swift in Sources */,
 				60DF0A562C1EFBF6004A878F /* BlurEffect.swift in Sources */,
-				60C81D402C285A8700D3C4D3 /* AppState.swift in Sources */,
 				60C81D482C29355700D3C4D3 /* LoginRequest.swift in Sources */,
 				60DF0A582C1EFF07004A878F /* Settings.swift in Sources */,
 				60C81D4A2C2936C900D3C4D3 /* AppError.swift in Sources */,

@@ -11,16 +11,16 @@ struct PokemonList: View {
     @EnvironmentObject var store: Store
     
     var pokemonModel: PokemonModels {
-        store.appStare.pokemonList
+        store.pokemonList
     }
         
     var body: some View {
         ScrollView {
             LazyVStack{
-                TextField("搜索", text: $store.appStare.pokemonList.searchText.animation(nil))
+                TextField("搜索", text: $store.pokemonList.searchText.animation(nil))
                     .frame(height: 40)
                     .padding(.horizontal, 25)
-                ForEach(pokemonModel.displayPokemons(with: store.appStare.settings)) { pokemon in
+                ForEach(pokemonModel.displayPokemons(with: store.settings)) { pokemon in
                     PokemonInfoRow(
                         model: pokemon,
                         expanded: pokemonModel.selectionState.isExpanding(pokemon.id)
