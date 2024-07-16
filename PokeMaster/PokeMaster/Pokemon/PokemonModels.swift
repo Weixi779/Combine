@@ -36,7 +36,7 @@ struct PokemonModels {
     
     var searchText = ""
 
-    func displayPokemons(with settings: Settings) -> [PokemonViewModel] {
+    func displayPokemons(with settings: SettingViewModel) -> [PokemonViewModel] {
 
         func isFavorite(_ pokemon: PokemonViewModel) -> Bool {
             guard let user = settings.loginUser else { return false }

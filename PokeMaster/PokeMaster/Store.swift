@@ -8,7 +8,7 @@
 import Combine
 
 class Store: ObservableObject {
-    @Published var settings = Settings()
+    @Published var settingViewModel = SettingViewModel()
     @Published var checker = AccountChecker()
     @Published var pokemonList = PokemonModels()
     
@@ -53,18 +53,18 @@ class Store: ObservableObject {
             self.checker.loginRequesting = true
             appCommand = LoginAppCommand(email: email, password: password)
         case .logout:
-            settings.loginUser = nil
+            settingViewModel.loginUser = nil
             checker.email = ""
             checker.password = ""
         case .emialValid(let vaild):
-            settings.isEmailValid = vaild
+            settingViewModel.isEmailValid = vaild
         case .registerVaild(let vaild):
-            settings.isRegisterVaild = vaild
+            settingViewModel.isRegisterVaild = vaild
         case .accountBehaviorDone(let result):
             checker.loginRequesting = false
             switch result {
             case .success(let user):
-                settings.loginUser = user
+                settingViewModel.loginUser = user
             case .failure(let error):
                 checker.loginError = error
             }

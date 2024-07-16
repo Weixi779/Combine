@@ -20,7 +20,7 @@ struct PokemonList: View {
                 TextField("搜索", text: $store.pokemonList.searchText.animation(nil))
                     .frame(height: 40)
                     .padding(.horizontal, 25)
-                ForEach(pokemonModel.displayPokemons(with: store.settings)) { pokemon in
+                ForEach(pokemonModel.displayPokemons(with: store.settingViewModel)) { pokemon in
                     PokemonInfoRow(
                         model: pokemon,
                         expanded: pokemonModel.selectionState.isExpanding(pokemon.id)

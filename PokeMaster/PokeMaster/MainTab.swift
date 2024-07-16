@@ -25,9 +25,9 @@ struct MainTab: View {
         .ignoresSafeArea(edges: .top)
         .overlaySheet(isPresented: $store.pokemonList.selectionState.panelPresented) {
             if let index = store.pokemonList.selectionState.expandingIndex,
-               let pokemons = store.pokemonList.pokemons {
-                let targetPokemon = pokemons[index]
-                PokemonInfoPanelOverlay(model: targetPokemon!)
+               let pokemons = store.pokemonList.pokemons,
+               let target = pokemons[index] {
+                PokemonInfoPanelOverlay(model: target)
             }
         }
     }

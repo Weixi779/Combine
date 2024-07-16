@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Settings {
+class SettingViewModel {
     @FileStorage(directory: .documentDirectory, fileName: "user.json")
     var loginUser: User?
     
@@ -27,7 +27,7 @@ struct Settings {
 }
 
 
-extension Settings.Sorting {
+extension SettingViewModel.Sorting {
     var text: String {
         switch self {
         case .id: return "ID"

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct PokeMasterApp: App {
+    @StateObject var store: Store = Store()
+    
     var body: some Scene {
         WindowGroup {
-            MainTab().environmentObject(Store())
+            MainTab()
+                .environmentObject(store)
         }
     }
 }

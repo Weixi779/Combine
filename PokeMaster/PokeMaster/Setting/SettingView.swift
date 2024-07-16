@@ -12,13 +12,13 @@ struct SettingView: View {
     
     @State private var isGreenColor: Bool = true
     
-    var settingBinding: Binding<Settings> { $store.settings }
+    var settingBinding: Binding<SettingViewModel> { $store.settingViewModel }
     
     var checkerBinding: Binding<AccountChecker> { $store.checker }
     
     var checker: AccountChecker { store.checker }
     
-    var settings: Settings { store.settings }
+    var settings: SettingViewModel { store.settingViewModel }
     
     var body: some View {
         Form {
@@ -79,7 +79,7 @@ struct SettingView: View {
     var optionSection: some View {
         Section(header: Text("选项")) {
             Picker(selection: settingBinding.sorting, label: Text("排序方式")) {
-                ForEach(Settings.Sorting.allCases, id: \.self) {
+                ForEach(SettingViewModel.Sorting.allCases, id: \.self) {
                     Text($0.text)
                 }
             }
