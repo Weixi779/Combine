@@ -35,13 +35,13 @@ struct SpeciesView: View {
     
     var body: some View {
         VStack {
-            Text("baseHappiness: \(species.baseHappiness)")
-            Text("captureRate: \(species.captureRate)")
             Text("color: \(species.color)")
+            Text("flavor: \(species.flavorTextEntries)")
         }
     }
 }
 
 #Preview {
     PokemonListRootView()
+        .environment(AppStore())
 }

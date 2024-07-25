@@ -20,6 +20,7 @@
 		601A71632C52086B00C02C7E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601A71622C52086B00C02C7E /* NetworkError.swift */; };
 		601A71652C52087B00C02C7E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601A71642C52087B00C02C7E /* NetworkManager.swift */; };
 		601A71672C52089700C02C7E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601A71662C52089700C02C7E /* HTTPMethod.swift */; };
+		601A716A2C521F3000C02C7E /* PokemonLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601A71692C521F3000C02C7E /* PokemonLanguage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		601A71622C52086B00C02C7E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		601A71642C52087B00C02C7E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		601A71662C52089700C02C7E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		601A71692C521F3000C02C7E /* PokemonLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonLanguage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				601A715D2C5207F800C02C7E /* PokemonSpecies.swift */,
 				601A715F2C52081300C02C7E /* PokemonColor.swift */,
+				601A71692C521F3000C02C7E /* PokemonLanguage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				601A71652C52087B00C02C7E /* NetworkManager.swift in Sources */,
 				601A715E2C5207F800C02C7E /* PokemonSpecies.swift in Sources */,
+				601A716A2C521F3000C02C7E /* PokemonLanguage.swift in Sources */,
 				601A71632C52086B00C02C7E /* NetworkError.swift in Sources */,
 				601A71602C52081300C02C7E /* PokemonColor.swift in Sources */,
 				601A71532C52076100C02C7E /* AppStore.swift in Sources */,

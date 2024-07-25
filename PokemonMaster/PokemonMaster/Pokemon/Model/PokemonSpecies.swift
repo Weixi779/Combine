@@ -9,13 +9,17 @@ import Foundation
 import CodableWrapper
 
 @Codable
-class PokemonSpecies {
-    var baseHappiness: Int
-    var captureRate: Int
+struct PokemonFlavorText {
+    let flavorText: String
+    let language: PokemonLanguage
+}
+
+@Codable
+struct PokemonSpecies {
     @CodingNestedKey("color.name")
     @CodingTransformer(PokemonColor.transformer)
-    var color: PokemonColor
-//    var evolution_chain: LSEvolution_chainModel?
+    let color: PokemonColor
+    let flavorTextEntries: [PokemonFlavorText]
 //    var flavor_text_entries: Array<LSFlavor_text_entriesModel>?
 //    var form_descriptions: Array<Any>?
 //    var forms_switchable: Bool?
