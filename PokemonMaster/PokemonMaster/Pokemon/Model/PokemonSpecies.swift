@@ -20,6 +20,13 @@ struct PokemonSpecies {
     @CodingTransformer(PokemonColor.transformer)
     let color: PokemonColor
     let flavorTextEntries: [PokemonFlavorText]
+    
+    var flavorTexts: [String] {
+        self.flavorTextEntries
+            .filter{ $0.language.isSimplified }
+            .map{ $0.flavorText.replacingOccurrences(of: "\n", with: "") }
+            .reduce(into: [String]()) { if !$0.contains($1) { $0.append($1) } }
+    }
 //    var flavor_text_entries: Array<LSFlavor_text_entriesModel>?
 //    var form_descriptions: Array<Any>?
 //    var forms_switchable: Bool?

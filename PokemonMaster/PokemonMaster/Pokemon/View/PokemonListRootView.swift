@@ -11,16 +11,18 @@ struct PokemonListRootView: View {
     @Environment(\.appStore) var store
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(alignment: .leading) {
                 if let species = store.pokemonViewModel.species {
                     SpeciesView(species: species)
                 } else {
                     EmptyView()
                 }
+                Spacer()
             }
+            .navigationTitle("列表数据")
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear { store.pokemonViewModel.requestSpecies() }
         }
-        .navigationTitle("列表数据")
     }
 }
 
@@ -34,10 +36,17 @@ struct SpeciesView: View {
     @State var species: PokemonSpecies
     
     var body: some View {
-        VStack {
-            Text("color: \(species.color)")
-            Text("flavor: \(species.flavorTextEntries)")
+        VStack(alignment: .leading, spacing: 8) {
+            Text("简介:")
+                .font(.headline)
+            Divider()
+            ForEach(species.flavorTexts, id: \.self) { text in
+                Text(text)
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+            }
         }
+        .padding(.horizontal, 15)
     }
 }
 

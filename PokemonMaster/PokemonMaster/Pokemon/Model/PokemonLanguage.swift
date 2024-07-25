@@ -9,7 +9,12 @@ import Foundation
 import CodableWrapper
 
 @Codable
-class PokemonLanguage {
+struct PokemonLanguage {
     let name: String
     let url: String
+}
+
+extension PokemonLanguage {
+    var isSimplified: Bool { self.name == "zh-Hans" }
+    var isEnglish: Bool { self.name == "en" }
 }
