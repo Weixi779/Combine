@@ -10,8 +10,8 @@ import CodableWrapper
 
 @Codable
 class PokemonSpecies {
-    var base_happiness: Int
-    var capture_rate: Int
+    var baseHappiness: Int
+    var captureRate: Int
     @CodingNestedKey("color.name")
     @CodingTransformer(PokemonColor.transformer)
     var color: PokemonColor

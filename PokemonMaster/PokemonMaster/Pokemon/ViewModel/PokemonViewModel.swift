@@ -11,10 +11,12 @@ import Foundation
 class PokemonViewModel {
     var species: PokemonSpecies?
     
-    func requestSpecies() async throws {
+    func requestSpecies() {
         Task {
             do {
                 species = try await PokemonRequest.getSpeciesInfo("1")
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }

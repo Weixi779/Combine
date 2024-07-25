@@ -13,7 +13,8 @@ struct PokemonMasterApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PokemonListRootView()
+                .environment(store)
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Observation
 
 @Observable
 class AppStore {
@@ -18,7 +19,7 @@ struct StoreKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    var store: AppStore {
+    var appStore: AppStore {
         get { self[StoreKey.self] }
         set { self[StoreKey.self] = newValue }
     }
